@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🧠 NerveConnect
+NerveConnect is an intelligent hospital management platform combining Voice Assistant for appointment booking and a Doctor Dashboard powered by Gemini AI for smart prescription generation with learning capability. It includes secure user authentication, real-time AI feedback, and full-stack integration with PostgreSQL via Prisma.
 
-## Getting Started
+🚀 Features
+🤖 AI Voice Frontdesk (MediAssist)
+Speech recognition and synthesis using Web APIs
 
-First, run the development server:
+Gemini-integrated intent parsing
 
-```bash
+Collects patient name, doctor, date, and time
+
+Checks doctor availability and confirms appointments
+
+Responsive futuristic UI with interactive voice orb and animations
+
+🧑‍⚕️ Doctor Dashboard
+Displays assigned patients
+
+Gemini API suggests prescriptions based on symptoms and vitals
+
+Doctor can edit AI suggestions
+
+System learns from doctor edits (backpropagation mechanism)
+
+🔐 Authentication
+Sign-up and sign-in with JWT-based session handling
+
+Secure password storage with hashing
+
+Auth-protected routes using middleware
+
+📊 Admin + Data
+Appointment booking engine (Doctor-Patient-Date logic)
+
+Prisma ORM with PostgreSQL
+
+Centralized patient/appointment records
+
+Disease records and AI analysis logs
+
+🧱 Tech Stack
+Layer	Tech
+Frontend	Next.js (App Router), TypeScript, TailwindCSS, Lucide, Web Speech API
+Backend	Next.js API Routes, Prisma ORM, Gemini Pro API (LLM)
+Database	PostgreSQL
+Authentication	JWT, Bcrypt
+Deployment	Vercel (Frontend), Railway/Render (DB)
+
+📂 Folder Structure (Simplified)
+NerveConnect/
+├── prisma/                  # Prisma schema & migrations
+├── public/                  # Static assets
+├── src/
+│   ├── app/
+│   │   ├── frontdesk/       # Voice bot UI
+│   │   ├── dashboard/       # Doctor dashboard
+│   │   ├── api/             # Next.js API routes (backend logic)
+│   │   ├── auth/            # Sign in/out/up pages
+│   │   ├── utils/           # Helpers, styles
+│   │   ├── types/           # Type declarations
+│   └── lib/                 # Prisma client, auth utilities
+├── .env                     # Environment variables
+├── next.config.ts           # Next.js config
+├── README.md                # This file
+⚙️ Setup & Development
+1. Clone the repo
+git clone https://github.com/Rishabh-Anand123/NerveConnect.git
+cd NerveConnect
+2. Install dependencies
+npm install
+3. Set environment variables
+Create a .env file:
+
+env
+DATABASE_URL=postgresql://user:password@localhost:5432/nerveconnect
+JWT_SECRET=your_super_secret
+GEMINI_API_KEY=your_gemini_api_key
+4. Push database schema
+npx prisma db push
+5. Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🧪 Testing the App
+Visit http://localhost:3000/signup to create an account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000/frontdesk for voice-based appointment booking
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000/dashboard for the doctor’s AI-powered prescription tool
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+📡 Deployment
+Frontend: Deploy on Vercel:
+vercel --prod
+Database: Use Railway or Render for free PostgreSQL hosting.
 
-## Learn More
+Update the DATABASE_URL in .env accordingly.
 
-To learn more about Next.js, take a look at the following resources:
+🧠 Gemini Integration (Google AI)
+Gemini is used for both:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Extracting structured data from voice transcript (appointment intent)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Generating prescription suggestions in the dashboard
 
-## Deploy on Vercel
+🛡️ Auth Flow
+JWT issued on login, stored in cookies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Middleware checks token validity
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Protects patient/appointment API routes
+
+📌 Todo / Improvements
+✅ Add doctor availability calendar
+⏳ Notifications (email/text)
+
+📃 License
+MIT License © 2025 Rishabh Anand
+
